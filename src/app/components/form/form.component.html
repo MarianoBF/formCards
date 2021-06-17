@@ -1,0 +1,36 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Nombre</label>
+    <input type="text" class="form-control" formControlName="name" />
+  </div>
+  <div class="form-group">
+    <label>Apellido</label>
+    <input formControlName="surname" type="text" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Edad</label>
+    <input formControlName="age" type="text" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Equipo</label>
+    <input formControlName="team" type="text" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input formControlName="email" type="text" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input formControlName="password" type="password" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Imagen</label>
+    <input formControlName="image" type="password" class="form-control" />
+  </div>
+  <input
+    type="submit"
+    value="Guardar"
+    class="btn btn-primary btn-success"
+    [disabled]="formulario.invalid"
+  />
+</form>
