@@ -1,8 +1,12 @@
 <div class="multipleCardsContainer">
-    <div class="singleCardContainer" *ngFor="let person of persons">
-    <p class="cardName">{{person.name}} {{person.surname}}</p>
-    <p class="cardText">{{person.email}}</p>
-    <p class="cardText">Equipo: {{person.team}}</p>
-    <img class="cardImg" alt="Face" src={{person.image}}>
-    </div>
+  <div
+    class="singleCardContainer"
+    *ngFor="let person of persons"
+    [ngStyle]="{ 'background': getColor(person.team) }"
+  >
+    <p class="cardName">{{ person.name }} {{ person.surname }}</p>
+    <p class="cardText">{{ person.email }}</p>
+    <p class="cardText">Equipo: {{ person.team }}</p>
+    <img class="cardImg" alt="Face" src="{{ person.image }}" />
+  </div>
 </div>

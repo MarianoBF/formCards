@@ -10,3 +10,8 @@ input.ng-invalid.ng-touched {
     color:tomato;
     font-size: 0.8rem;
 }
+
+.formContainer {
+    max-width: 80vw;
+    justify-content: center;
+}

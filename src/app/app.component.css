@@ -1,0 +1,9 @@
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.btn {
+    margin: 10px;
+}
