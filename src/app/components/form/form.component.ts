@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Person } from '../../models/person.model';
 import { PersonsService } from '../../services/persons.service';
+import { Team } from '../../models/team-enums.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -11,9 +13,9 @@ import { PersonsService } from '../../services/persons.service';
 export class FormComponent implements OnInit {
   teamMember: Person;
   teamMemberForm: FormGroup;
+  teams: string[] = [Team.AMARILLO, Team.AZUL, Team.ROJO, Team.VERDE];
 
-
-  constructor(private PersonsService: PersonsService) {
+  constructor(private PersonsService: PersonsService, private router: Router) {
     this.teamMemberForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       surname: new FormControl(),
@@ -30,7 +32,10 @@ export class FormComponent implements OnInit {
 
   onSubmit(): void {
     this.teamMember = { ...this.teamMemberForm.value };
-    this.PersonsService.addPerson(this.teamMember);
+    this.PersonsService.addPerson(this.teamMember).then(res=>{
+      console.log("added ok:", res);
+      this.router.navigate(["/verPersonas"])
+    });
   }
 
   ageValidator(formControl: any): any {

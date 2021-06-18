@@ -12,12 +12,15 @@ export class PersonsService {
     this.arrPersons = [...PERSONS];
   }
 
-  getAll(): Person[] {
-    return this.arrPersons;
+  getAll(): Promise<Person[]> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrPersons);
+    });
   }
 
-  addPerson(person: Person): void {
-    this.arrPersons.push(person);
-    console.log('arr', this.arrPersons);
+  addPerson(person: Person): Promise<number> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrPersons.push(person));
+    });
   }
 }

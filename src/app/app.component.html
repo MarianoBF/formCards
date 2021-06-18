@@ -1,3 +1,5 @@
-<button (click)="onClickView()">Mostrar personas</button>
-<button (click)="onClickAdd()">Sumar persona (implementar como promises)</button>
+<div class="buttonContainer">
+<button class="btn btn-primary" [routerLink]="['/verPersonas']">Mostrar personas</button>
+<button class="btn btn-primary" [routerLink]="['/agregarPersona']">Sumar persona</button>
+</div>
 <router-outlet></router-outlet>
