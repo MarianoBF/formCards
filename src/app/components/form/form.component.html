@@ -1,4 +1,4 @@
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<form [formGroup]="teamMemberForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>Nombre</label>
     <input type="text" class="form-control" formControlName="name" />
@@ -31,6 +31,6 @@
     type="submit"
     value="Guardar"
     class="btn btn-primary btn-success"
-    [disabled]="formulario.invalid"
+    [disabled]="teamMemberForm.invalid"
   />
 </form>

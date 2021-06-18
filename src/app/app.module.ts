@@ -4,14 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
-import { CardsComponent } from './components/cards/cards.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PersonsComponent } from './components/persons/persons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    CardsComponent
+    PersonsComponent
   ],
   imports: [
     BrowserModule,
