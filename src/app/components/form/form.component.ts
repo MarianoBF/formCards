@@ -14,6 +14,7 @@ export class FormComponent implements OnInit {
   teamMember: Person;
   teamMemberForm: FormGroup;
   teamOptions: string[];
+  imgSrc: string;
 
   constructor(private PersonsService: PersonsService, private router: Router) {
     this.teamMemberForm = new FormGroup({
@@ -26,19 +27,25 @@ export class FormComponent implements OnInit {
     });
     this.teamMember = { ...this.teamMemberForm.value };
     this.teamOptions = [...Object.keys(Team)]
+    this.imgSrc= ""
   }
 
   ngOnInit(): void {
-    console.log(this.teamOptions)
-
   }
 
   onSubmit(): void {
+    console.log(this.teamMember);
+    
     this.teamMember = { ...this.teamMemberForm.value };
     this.PersonsService.addPerson(this.teamMember).then(res=>{
       console.log("added ok:", res);
       this.router.navigate(["/verPersonas"])
     });
+  }
+
+  onFileChange(src: any) {
+    console.log(src)
+    this.imgSrc = src.target.value 
   }
 
   teamValidator(formControl: any): any {
@@ -52,7 +59,7 @@ export class FormComponent implements OnInit {
     if (value > 18 && value < 90) {
       return null;
     } else {
-      return { edadValidator: { max, min } };
+      return { ageValidator: { max, min } };
     }
   }
 }

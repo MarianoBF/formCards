@@ -15,3 +15,15 @@ input.ng-invalid.ng-touched {
     max-width: 80vw;
     justify-content: center;
 }
+
+.imagePreview {
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.spacedBtn {
+    display: block;
+    margin: 25px auto;
+}

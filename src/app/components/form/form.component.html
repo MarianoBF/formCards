@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
   <div class="col .col-xl-">
+    <h1>Ingresá los datos de una persona para agregarla al listado</h1>
 <form [formGroup]="teamMemberForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>Nombre</label>
@@ -12,8 +13,11 @@
   </div>
   <div class="form-group">
     <label>Edad</label>
-    <input formControlName="age" type="text" class="form-control" />
+    <input formControlName="age" type="number" class="form-control" />
   </div>
+  <div *ngIf="teamMemberForm.controls.age.errors?.ageValidator && teamMemberForm.controls.age.touched" class="error">
+    <p>Edad incorrecta, la edad debe estar entre {{teamMemberForm.controls.age.errors?.ageValidator?.min}} y {{teamMemberForm.controls.age.errors?.ageValidator?.max}}</p>
+</div>
   <div class="form-group">
     <label>Equipo</label>
     <select class="form-select" formControlName="team">
@@ -26,12 +30,16 @@
   </div>
   <div class="form-group">
     <label>Imagen (url)</label>
-    <input formControlName="image" type="text" class="form-control" />
+    <input formControlName="image" type="text" class="form-control" (change)=onFileChange($event) />
+    <small class="form-text text-muted">Ingresá el link para previsualizar la imagen </small>
+    <img *ngIf="imgSrc" [src]="imgSrc" class="imagePreview">
   </div>
+
+
   <input
     type="submit"
     value="Guardar"
-    class="btn btn-primary btn-success"
+    class="btn btn-primary btn-success spacedBtn"
     [disabled]="teamMemberForm.invalid"
   />
 </form>
