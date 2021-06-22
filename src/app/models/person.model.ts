@@ -3,7 +3,6 @@ import { Team } from './team-enums.model';
 export class Person {
   name: string;
   surname: string;
-  password: string;
   age: number;
   email: string;
   team: Team;
@@ -12,7 +11,6 @@ export class Person {
   constructor(
     name: string,
     surname: string,
-    password: string,
     age: number,
     email: string,
     team: Team,
@@ -20,7 +18,6 @@ export class Person {
   ) {
     this.name = name;
     this.surname = surname;
-    this.password = password;
     this.age = age;
     this.team = team;
     this.email = email;

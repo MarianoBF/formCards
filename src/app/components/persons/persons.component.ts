@@ -11,7 +11,8 @@ import { Team } from 'src/app/models/team-enums.model';
 export class PersonsComponent implements OnInit {
   persons: Person[] = [];
 
-  constructor(private PersonsService: PersonsService) {}
+  constructor(private PersonsService: PersonsService) {
+  }
 
   ngOnInit(): void {
     this.PersonsService.getAll().then((res) => (this.persons = res));
@@ -19,13 +20,13 @@ export class PersonsComponent implements OnInit {
 
   getColor(i: Team): string {
     switch (i) {
-      case 'Rojo':
+      case "Rojo":
         return 'lightcoral';
-      case 'Verde':
+      case "Verde":
         return 'lightgreen';
-      case 'Azul':
+      case "Azul":
         return 'lightblue';
-      case 'Amarillo':
+      case "Amarillo":
         return 'lightyellow';
       default:
         return 'white';

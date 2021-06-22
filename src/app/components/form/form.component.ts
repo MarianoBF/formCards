@@ -13,22 +13,25 @@ import { Router } from '@angular/router';
 export class FormComponent implements OnInit {
   teamMember: Person;
   teamMemberForm: FormGroup;
-  teams: string[] = [Team.AMARILLO, Team.AZUL, Team.ROJO, Team.VERDE];
+  teamOptions: string[];
 
   constructor(private PersonsService: PersonsService, private router: Router) {
     this.teamMemberForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      surname: new FormControl(),
-      password: new FormControl(),
-      age: new FormControl('', [this.ageValidator]),
-      email: new FormControl('', [Validators.pattern(/@/)]),
-      team: new FormControl(),
+      surname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      age: new FormControl('', [Validators.required, this.ageValidator]),
+      email: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)]),
+      team: new FormControl('', [Validators.required, this.teamValidator]),
       image: new FormControl(''),
     });
     this.teamMember = { ...this.teamMemberForm.value };
+    this.teamOptions = [...Object.keys(Team)]
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.teamOptions)
+
+  }
 
   onSubmit(): void {
     this.teamMember = { ...this.teamMemberForm.value };
@@ -38,15 +41,18 @@ export class FormComponent implements OnInit {
     });
   }
 
+  teamValidator(formControl: any): any {
+    (formControl.value) in Team ? null : { teamValidator: "Elegí un equipo"}
+  }
+
   ageValidator(formControl: any): any {
-    console.log(formControl.value);
     const max = 90;
     const min = 18;
     const value = formControl.value;
     if (value > 18 && value < 90) {
       return null;
     } else {
-      return { edadvalidator: { max, min } };
+      return { edadValidator: { max, min } };
     }
   }
 }

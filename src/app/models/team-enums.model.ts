@@ -1,6 +1,6 @@
 export enum Team {
-    ROJO="Rojo",
-    VERDE="Verde",
-    AMARILLO="Amarillo",
-    AZUL="Azul"
+    Rojo="Rojo",
+    Verde="Verde",
+    Amarillo="Amarillo",
+    Azul="Azul"
 }
